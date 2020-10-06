@@ -9,6 +9,8 @@ typedef struct s_stack
 {
     int          elem;
     int               index;
+    int               order;
+    int                size;
     struct s_stack    *next;
     struct s_stack    *prev;
 }             t_stack;
@@ -37,10 +39,19 @@ typedef struct s_tab
     t_stack *tail_a;
     t_stack *tail_b;
     char *message;
-    int bottom;
-    int top;
+    int a;
+    int b;
+    int num;
 }               t_tab;
 
+int     search_num(t_tab *t, int num);
+char    *find_max(t_tab *t, int max);
+void    from_a_to_b(t_tab *t);
+int     size_of_stack(t_stack *a);
+int     num_to_top(t_tab *t, char c, int part);
+void    min_to_top_b(t_tab *t);
+void    sort(t_tab *t);
+char    *find_num(t_tab *t, int part);
 void	sort_int_tab(int *tab, int size);
 int     check_array(t_tab *tab);
 void    sort_processing(t_tab *tab);

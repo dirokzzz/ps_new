@@ -124,7 +124,7 @@ void get_rule_check(t_stack *a, t_stack *b)
 		rule_accept_a(&a, &b, rule);
 		rule_accept_b(&a, &b, rule);
 	}
-	//printf("STEPS=%d\n", steps);
+	printf("STEPS=%d\n", steps);
 	check_array(a, b);
 	free(rule);
 }

@@ -19,6 +19,8 @@ SRC =	main.c\
 		operations2.c\
 		pars_check_args.c\
 		stack_op.c\
+		sort.c\
+		sort2.c\
 
 OBJ = $(SRC:c=o)
 

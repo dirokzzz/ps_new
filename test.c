@@ -50,3 +50,52 @@ int main()
 	free(a->message);
 	free(a);
 }
+
+
+
+void min_to_top_b(t_tab *t)
+{
+	int num;
+	int need;
+	t_stack *b;
+
+	need = 0;
+	if (!b || !b->next)
+		return ;
+	num = t->head_a->index;
+	while (b)
+	{
+		if(num < b->index && num > b->next->index)
+			need = b->index;
+		b = b->next;
+	}
+	if(!need)
+	{
+		
+	}
+}
+
+void min_to_top_b(t_tab *t)
+{
+	int		min;
+	t_stack *a;
+	int		size;
+	int		order;
+
+	if(!t->head_b)
+		return ;
+	a = t->head_b;
+	size = a->size;
+	min = INT32_MAX;
+	re_order(t->head_b);
+	while(a)
+	{
+		min = min > a->index ? a->index : min;
+		a = a->next;
+	}
+	a = t->head_b;
+	while(a->index != min)
+		a = a->next;
+	order = a->order;
+	to_top_b(t, min, order);
+}

@@ -12,7 +12,7 @@ void	print_stacks(t_tab *tab)
     int flag;
     t_stack *a = tab->head_a;
     t_stack *b = tab->head_b;
-    while (a)
+    while (a || b)
     {
         flag = 0;
         if (a)
@@ -26,7 +26,7 @@ void	print_stacks(t_tab *tab)
             if (!flag)
             {
                 flag = 1;
-                ft_printf("3%d", b->index);
+                ft_printf("%5d", b->index);
             }
             else
                 ft_printf("%d", b->index);
@@ -35,7 +35,7 @@ void	print_stacks(t_tab *tab)
         if (flag)
             ft_printf("\n");
     }
-    ft_printf("_ _\na b\n");
+    ft_printf("_   _\na   b\n");
     /*a = tab->tail_a;
     b = tab->tail_b;
     while (a)
@@ -114,7 +114,9 @@ int check_array(t_tab *tab)
     t_stack *a;
 
     a = tab->head_a;
-	ok = 1;
+	if (!a)
+        return (0);
+    ok = 1;
 	while(a->next)
 	{
 		if(a->elem > a->next->elem)

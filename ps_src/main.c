@@ -46,16 +46,52 @@ t_stack	*init_stack_a(t_stack *stack, char **av, int ac, t_tab *tab)
 	    exit(0);
 	head = stack;
 	stack->elem = tab->tab[x++];
-	stack->index = x;
+	stack->order = x;
 	stack->prev = NULL;
 	while (x < tab->size)
 	{
 	    stack = new_elem(stack, tab->tab[x++]);
-	    stack->index = x;
+	    stack->order = x;
 	    tab->tail_a = stack;
 	}
 	head = index_init(head, tab);
 	return (head);
+}
+
+void ft_clearstr_stack(t_tab *s)
+{
+	char *ptr;
+
+	ptr = s->message;
+	char *str;
+    while (*ptr != '\0')
+    {
+        if (ft_strncmp(ptr, "pa\npb\n", 6) == 0)
+        {
+            ft_strcpy(ptr, (ptr + 6));
+            ptr = s->message;
+        }
+        else if (ft_strncmp(ptr, "pb\npa\n", 6) == 0)
+        {
+            ft_strcpy(ptr, (ptr + 6));
+            ptr = s->message;
+        }
+        else if (ft_strncmp(ptr, "\nrb\nrrb", 7) == 0)
+        {
+            ft_strcpy(ptr, (ptr + 7));
+            ptr = s->message;
+        }
+        else if (ft_strncmp(ptr, "ra\nrb\n", 4) == 0)
+        {
+			str = ft_strdup(ptr + 6);
+            ft_strcpy(ptr, "rr\n");
+			ptr = s->message;
+			ptr = ft_strjoin_f(ptr, str, 1);
+			s->message = ptr;
+        }
+        else
+            ptr++;
+    }
 }
 
 int		main(int ac, char **av)
@@ -65,34 +101,17 @@ int		main(int ac, char **av)
     
     if (!(tab = malloc(sizeof(t_tab))))
         exit(0);
-    tab->bottom = 0;
+	tab->message = ft_strdup("");
     a = NULL;
     if (ac >= 2)
     {
         tab->head_a = init_stack_a(a, av, ac, tab);
         tab->head_b = NULL;
 		tab->tail_b = NULL;
-		print_stacks(tab);
-		getchar();
-		ft_push_b(tab);
-		print_stacks(tab);
-		getchar();
-		ft_push_b(tab);
-		print_stacks(tab);
-		getchar();
-		ft_push_a(tab);
-		print_stacks(tab);
-		getchar();
-		ft_push_a(tab);
-		print_stacks(tab);
-		getchar();
-		ft_push_a(tab);
-		print_stacks(tab);
-		getchar();
-        tab->top = tab->size / 2 + 1;
         if (!check_array(tab))
-			printf("qwqeqe");
-          //  sort_processing(tab);
+			sort(tab);
+		ft_clearstr_stack(tab);
+		ft_printf("%s", tab->message);
     }
     free(tab);
 }

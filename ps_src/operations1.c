@@ -1,5 +1,19 @@
 #include "checker.h"
 
+void stack_choose(t_tab *t, t_stack *tail, t_stack *head, char *s)
+{
+    if(!ft_strcmp(s, "rb") || !ft_strcmp(s, "rrb"))
+    {
+        t->tail_b = tail;
+        t->head_b = head;
+    }
+    if(!ft_strcmp(s, "ra") || !ft_strcmp(s, "rra"))
+    {
+        t->tail_a = tail;
+        t->head_a = head;
+    }
+}
+
 void ft_r_stack(t_tab *tab, char *s) //OK
 {
     t_stack *a;
@@ -7,7 +21,7 @@ void ft_r_stack(t_tab *tab, char *s) //OK
     t_stack *first;
     t_stack *last;
 
-    a = tab->head_a;
+    a = !ft_strcmp(s, "rb") ? tab->head_b : tab->head_a;
     if (!a || !a->next)
         return ;
     first = a;
@@ -20,12 +34,11 @@ void ft_r_stack(t_tab *tab, char *s) //OK
     first->next = NULL;
     first->prev = last;
     last->next = first;
-    tab->tail_a = first;
+    stack_choose(tab, first, a, s);
     if (!ft_strcmp("rb", s))
-        ft_printf("rb\n");
+        tab->message = ft_strjoin_f(tab->message, "rb\n", 1);
     if (!ft_strcmp("ra", s))
-        ft_printf("ra\n");
-    tab->head_a = a;
+        tab->message = ft_strjoin_f(tab->message, "ra\n", 1);
 }
 
 void ft_rr_stack(t_tab *tab, char *s)//OK
@@ -34,7 +47,7 @@ void ft_rr_stack(t_tab *tab, char *s)//OK
     t_stack *last;
     t_stack *a;
 
-    a = tab->head_a;
+    a = !ft_strcmp(s, "rrb") ? tab->head_b : tab->head_a;
     if (!a || !a->next)
         return ;
     first = a;
@@ -45,12 +58,12 @@ void ft_rr_stack(t_tab *tab, char *s)//OK
     last->next = first;
     first->prev = last;
     last->prev = NULL;
-    tab->tail_a = a;
+    stack_choose(tab, a, last, s);
     if (!ft_strcmp(s, "rrb"))
-        ft_printf("rrb\n");
+        tab->message = ft_strjoin_f(tab->message, "rrb\n", 1);
     else if (!ft_strcmp(s, "rra"))
-        ft_printf("rra\n");
-    tab->head_a = last;
+        tab->message = ft_strjoin_f(tab->message, "rra\n", 1);
+    
 }
 
 void    ft_rrr(t_tab *tab, char *s)
@@ -64,5 +77,5 @@ void    ft_rr(t_tab *tab, char *s)
     ft_r_stack(tab, s);
     ft_r_stack(tab, s);
     if (ft_strcmp("rr", s))
-        ft_printf("rr\n");
+        tab->message = ft_strjoin_f(tab->message, "rr\n", 1);
 }

@@ -64,9 +64,8 @@ int *parse_args(int ac, char **av)
         y = 0;
         while (args[x][y])
         {
-            square[size] = check_int(ft_atoi(args[x][y]), args[x][y]);
+            square[size++] = check_int(ft_atoi(args[x][y]), args[x][y]);
             y++;
-            size++;
         }
         x++;
     }
