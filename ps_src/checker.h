@@ -44,7 +44,10 @@ typedef struct s_tab
     int num;
 }               t_tab;
 
-int     search_num(t_tab *t, int num);
+void to_top_b(t_tab *t);
+void re_order(t_stack *a);
+void    find_min(t_tab *t);
+void     search_num(t_tab *t, int num);
 char    *find_max(t_tab *t, int max);
 void    from_a_to_b(t_tab *t);
 int     size_of_stack(t_stack *a);
@@ -61,7 +64,7 @@ void    get_rule_check(t_stack *a, t_stack *b);
 int     size_of_tab(int ac, char **av);
 void    check_arg(int ac, char **av);
 int     *parse_args(int ac, char **av);
-void    ft_s_elem(t_stack *a, char *s);
+void ft_s_elem(t_stack *a, t_tab *tab, char *s);
 void    ft_ss(t_tab *tab);
 t_stack *del_elem(t_stack *stack, t_stack **tail);
 t_stack *add_elem(t_stack *src, t_stack *dst, t_stack **tail);

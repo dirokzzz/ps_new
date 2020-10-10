@@ -16,20 +16,20 @@ void ft_push_a(t_tab *tab)
 
 void ft_ss(t_tab *tab)
 {
-    ft_s_elem(tab->head_a, tab, "");
-    ft_s_elem(tab->head_b, tab, "");
+    ft_s_elem(tab->head_a, "");
+    ft_s_elem(tab->head_b, "");
     ft_printf("ss\n");
 }
 
-void ft_s_elem(t_stack *a, t_tab *tab, char *s)
+void ft_s_elem(t_stack *a, char *s)
 {
-    if(a->next)
+    if(a->next->index != 0)
     {
         ft_swap_int(&a->elem, &a->next->elem);
         ft_swap_int(&a->index, &a->next->index);
         if (!ft_strcmp("sb", s))
-            tab->message = ft_strjoin_f(tab->message, "sb\n", 1);
+            ft_printf("sb\n");
         if (!ft_strcmp("sa", s))
-            tab->message = ft_strjoin_f(tab->message, "sa\n", 1);
+            ft_printf("sa\n");
     }
 }

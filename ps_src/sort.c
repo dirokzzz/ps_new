@@ -106,7 +106,7 @@ int num_to_top(t_tab *t, char c, int part)
 				ft_rr_stack(t, "rra");
 		}
 	}
-	return (flag ? 1 : 0);
+	return (flag);
 }
 
 void find_min(t_tab *t)
@@ -114,13 +114,23 @@ void find_min(t_tab *t)
 	t_stack *a;
 	int min;
 
-	a = t->head_a;
+	min = INT32_MAX;
+	a = t->head_b;
 	while (a)
 	{
 		min = min > a->index ? a->index : min;
 		a = a->next;
 	}
 	search_num(t, min);
+}
+
+void two_num(t_tab *t)
+{
+	t_stack *b;
+
+	b = t->head_b;
+	if(b->index > b->next->index)
+		ft_s_elem(b, t, "sb");
 }
 
 void to_top_b(t_tab *t)
@@ -133,11 +143,13 @@ void to_top_b(t_tab *t)
 	need = 0;
 	if (!b || !b->next)
 		return ;
+	if (!b->next->next)
+		two_num(t);
 	num = t->head_a->index;
-	while (b)
-	{
-		if(num < b->index && num > b->next->index)
-			need = b->index;
+	while (b->next)
+	{		
+		if(num > b->index && num < b->next->index)
+			need = b->next->index;
 		b = b->next;
 	}
 	if(!need)
@@ -150,19 +162,16 @@ void sort(t_tab *t)
 {
 	int part;
 	
-	part = t->size / 5;
+	part = t->size / 10;
 	while(t->head_a)
 	{
 		while(num_to_top(t, 'a', part))
 		{
-			print_stacks(t);
-			getchar();
 			to_top_b(t);
 			ft_push_b(t);
 			re_order(t->head_a);
 		}
-		
-		part += t->size / 5;
+		part += t->size / 10;
 	}
 	from_a_to_b(t);
 }

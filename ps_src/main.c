@@ -63,7 +63,6 @@ void ft_clearstr_stack(t_tab *s)
 	char *ptr;
 
 	ptr = s->message;
-	char *str;
     while (*ptr != '\0')
     {
         if (ft_strncmp(ptr, "pa\npb\n", 6) == 0)
@@ -80,14 +79,6 @@ void ft_clearstr_stack(t_tab *s)
         {
             ft_strcpy(ptr, (ptr + 7));
             ptr = s->message;
-        }
-        else if (ft_strncmp(ptr, "ra\nrb\n", 4) == 0)
-        {
-			str = ft_strdup(ptr + 6);
-            ft_strcpy(ptr, "rr\n");
-			ptr = s->message;
-			ptr = ft_strjoin_f(ptr, str, 1);
-			s->message = ptr;
         }
         else
             ptr++;
@@ -108,6 +99,38 @@ int		main(int ac, char **av)
         tab->head_a = init_stack_a(a, av, ac, tab);
         tab->head_b = NULL;
 		tab->tail_b = NULL;
+		/*print_stacks(tab);
+		getchar();
+		num_to_top(tab, 'a', 10);
+		to_top_b(tab);
+		print_stacks(tab);
+		getchar();
+		ft_push_b(tab);
+		re_order(tab->head_a);
+		print_stacks(tab);
+		getchar();
+		num_to_top(tab, 'a', 10);
+		to_top_b(tab);
+		print_stacks(tab);
+		getchar();
+		ft_push_b(tab);
+		re_order(tab->head_a);
+		print_stacks(tab);
+		getchar();*/
+		/*ft_push_b(tab);
+		ft_push_b(tab);
+		ft_push_b(tab);
+		ft_push_b(tab);
+		ft_push_b(tab);
+		ft_push_b(tab);
+		ft_push_b(tab);
+		ft_push_b(tab);
+		ft_push_b(tab);
+		print_stacks(tab);
+		search_num(tab, 7);
+		print_stacks(tab);
+		ft_printf("%s", tab->message);
+		getchar()*/
         if (!check_array(tab))
 			sort(tab);
 		ft_clearstr_stack(tab);
