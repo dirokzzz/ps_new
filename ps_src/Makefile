@@ -15,12 +15,16 @@ CC = gcc
 FLAGS = -g -Wall -Wextra -Werror
 INC = checker.h
 SRC =	main.c\
+		sort_little2.c\
 		operations1.c\
 		operations2.c\
 		pars_check_args.c\
 		stack_op.c\
-		sort.c\
-		sort2.c\
+		sort_big.c\
+		sort_big2.c\
+		sort_little.c\
+		free.c\
+		find_num.c\
 
 OBJ = $(SRC:c=o)
 

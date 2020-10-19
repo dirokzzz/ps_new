@@ -36,32 +36,6 @@ void	print_stacks(t_tab *tab)
             ft_printf("\n");
     }
     ft_printf("_   _\na   b\n");
-    /*a = tab->tail_a;
-    b = tab->tail_b;
-    while (a)
-    {
-        flag = 0;
-        if (a)
-        {
-            flag = 1;
-            ft_printf("%d ", a->index);
-            a = a->prev;
-        }
-        if (b)
-        {
-            if (!flag)
-            {
-                flag = 1;
-                ft_printf("3%d", b->index);
-            }
-            else
-                ft_printf("%d", b->index);
-            b = b->prev;
-        }
-        if (flag)
-            ft_printf("\n");
-    }
-    ft_printf("_ _\na b\n");*/
 }
 
 t_stack *add_elem(t_stack *src, t_stack *dst, t_stack **tail)
@@ -117,15 +91,15 @@ int check_array(t_tab *tab)
 	if (!a)
         return (0);
     ok = 1;
-	while(a->next)
+	while (a->next)
 	{
-		if(a->elem > a->next->elem)
+		if (a->elem > a->next->elem)
 			ok = 0;
 		a = a->next;
 	}
-	if(tab->head_b)
+	if (tab->head_b)
 		ok = 0;
-	if(ok)
+	if (ok)
 		return (1);
 	return (0);
 }
