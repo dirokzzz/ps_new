@@ -69,6 +69,7 @@ int *parse_args(int ac, char **av)
         }
         x++;
     }
+	cube_array_free(args);
     return (square);
 }
 
@@ -79,5 +80,6 @@ int size_of_tab(int ac, char **av)
 
     args = split_args(ac, av);
     size = size_of(args);
+	cube_array_free(args);
     return (size);
 }
