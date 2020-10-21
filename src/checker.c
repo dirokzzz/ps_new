@@ -24,10 +24,10 @@ void	get_rule_check(t_tab *t)
 		b_zero_rule(rule);
 		steps++;
 		rule_parse(line, rule);
-		free(line);
 		rule_accept(t, rule);
 		if (t->v)
-			print_stacks(t);
+			print_stacks(t, line);
+		free(line);
 	}
 	if (t->s)
 		ft_printf("%d \n", steps);

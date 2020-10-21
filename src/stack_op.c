@@ -85,7 +85,7 @@ void	result(t_tab *t)
 	if (t->head_b)
 		ok = 0;
 	if (ok)
-		write(1, "OK\n", 3);
+		ft_printf(C(GREEN)"OK\n"C(NO));
 	else
-		write(1, "KO\n", 3);
+		ft_printf(C(RED)"OK\n"C(NO));
 }

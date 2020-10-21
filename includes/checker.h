@@ -5,6 +5,17 @@
 # include <stdlib.h>
 # include <stdio.h>
 
+# define COLOR
+# define RED			"31"
+# define GREEN			"32"
+# define YELLOW			"33"
+# define BLUE			"34"
+# define PINK			"35"
+# define GRBL			"36"
+# define GREY			"37"
+# define NO				"0"
+# define C(X)			"\033["X"m"
+
 typedef struct	s_stack
 {
 	int				elem;
@@ -76,7 +87,7 @@ char		*find_num(t_tab *t, int part);
 void		sort_int_tab(int *tab, int size);
 void		sort_processing(t_tab *tab);
 void		ft_error(int e);
-void		print_stacks(t_tab *tab);
+void		print_stacks(t_tab *tab, char *line);
 void		get_rule_check(t_tab *t);
 void		check_arg(int ac, char **av, t_tab *t);
 void		ft_s_elem(t_stack *a, t_tab *tab, char *s);
