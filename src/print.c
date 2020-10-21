@@ -16,9 +16,10 @@ t_stack	*print_a(t_stack *a, int *flag)
 {
 	char *color;
 
-	if (!a->prev || a->next)
+	color = C(GREEN);
+	if (!a->prev && a->next)
 		color = (a->index == a->next->index - 1) ? C(GREEN) : C(RED);
-	else
+	else if (a->prev)
 		color = (a->index == a->prev->index + 1) ? C(GREEN) : C(RED);
 	*flag = 1;
 	ft_printf("%s", color);

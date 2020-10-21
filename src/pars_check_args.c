@@ -6,7 +6,7 @@ char	***split_args(int ac, char **av, t_tab *t)
 	char	***args;
 	int		y;
 
-	if(!(args = (char***)ft_memalloc(sizeof(char**) * ac)))
+	if (!(args = (char***)ft_memalloc(sizeof(char**) * ac)))
 		exit(0);
 	i = 1;
 	y = 0;
@@ -86,7 +86,8 @@ int		*parse_args(int ac, char **av, t_tab *t)
 	check_arg(ac, av, t);
 	args = split_args(ac, av, t);
 	size = size_of(args);
-	square = (int*)ft_memalloc(sizeof(int) * size);
+	if (!(square = (int*)ft_memalloc(sizeof(int) * size)))
+		exit(0);
 	size = 0;
 	while (args[x])
 	{
