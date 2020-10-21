@@ -6,7 +6,7 @@ t_stack	*add_elem(t_stack *src, t_stack *dst, t_stack **tail)
 
 	if (!src)
 		return (dst);
-	if (!(new = malloc(sizeof(t_stack))))
+	if (!(new = ft_memalloc(sizeof(t_stack))))
 		exit(0);
 	new->elem = src->elem;
 	new->index = src->index;

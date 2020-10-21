@@ -41,7 +41,7 @@ t_stack	*new_elem(t_stack *stack, int elem)
 {
 	t_stack *new;
 
-	if (!(new = malloc(sizeof(t_stack))))
+	if (!(new = ft_memalloc(sizeof(t_stack))))
 		exit(0);
 	stack->next = new;
 	new->elem = elem;
@@ -78,7 +78,7 @@ void	init_stack_a(t_stack *stack, char **av, int ac, t_tab *tab)
 	x = 0;
 	tab->size = size_of_tab(ac, av, tab);
 	tab->tab = parse_args(ac, av, tab);
-	if (!(stack = malloc(sizeof(t_stack))))
+	if (!(stack = ft_memalloc(sizeof(t_stack))))
 		exit(0);
 	tab->head_a = stack;
 	stack->elem = tab->tab[x++];

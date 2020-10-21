@@ -60,7 +60,7 @@ int		parse_flags(char **av, int ac, t_tab *t)
 
 t_tab	*tab_init(t_tab *t)
 {
-	if (!(t = malloc(sizeof(t_tab))))
+	if (!(t = ft_memalloc(sizeof(t_tab))))
 		exit(0);
 	t->message = ft_strdup("");
 	t->v = 0;

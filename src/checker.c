@@ -2,7 +2,7 @@
 
 void	help_print(void)
 {
-	printf("usage: ./checker [-v] display the stack’s \
+	ft_printf("usage: ./checker [-v] display the stack’s \
 	status after each operation\n                 [-s] \
 	operations count\n");
 	exit(0);
@@ -16,7 +16,7 @@ void	get_rule_check(t_tab *t)
 	int		steps;
 
 	steps = 0;
-	if (!(rule = malloc(sizeof(t_rule))))
+	if (!(rule = ft_memalloc(sizeof(t_rule))))
 		exit(0);
 	flag = 1;
 	while (get_next_line(0, &line))
